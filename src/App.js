@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+const Button = ({ name, onClick, children }) => (
+  <div>
+    <span>Olá {name} ... </span>
+    <button onClick={onClick}>{`Abrir ${name}`}</button>
+  </div>
+);
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Button name="Google" onClick={() => window.open("https://google.com")} />
+      <Button
+        name="Facebook"
+        onClick={() => window.open("https://facebook.com")}
+      />
+      <Button name="Gmail" onClick={() => window.open("https://gmail.com")} />
+      <Button
+        name="Youtube"
+        onClick={() => window.open("https://youtube.com")}
+      />
+      <Button
+        name="Twitter"
+        onClick={() => window.open("https://twitter.com")}
+      />
     </div>
   );
 }
