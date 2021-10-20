@@ -1,6 +1,10 @@
 import { Table, Dropdown } from "react-bootstrap";
 
 const TableComponent = ({ actions, columns = [], items = [], refetch }) => {
+  if (!items.length) {
+    return <h3>There's not data created</h3>;
+  }
+
   return (
     <Table striped bordered hover responsive>
       <thead>
