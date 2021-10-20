@@ -1,0 +1,53 @@
+import { Table, Dropdown } from "react-bootstrap";
+
+const TableComponent = ({ actions, columns = [], items = [], refetch }) => {
+  return (
+    <Table striped bordered hover responsive>
+      <thead>
+        <tr>
+          {columns.map((column, index) => (
+            <th key={index}>{column.value}</th>
+          ))}
+
+          {actions && <th>Actions</th>}
+        </tr>
+      </thead>
+      <tbody>
+        {items.map((item, index) => (
+          <tr key={index}>
+            {columns.map((column, indexColumn) => {
+              const value = item[column.id];
+
+              return (
+                <td key={indexColumn}>
+                  {column.render ? column.render(value) : value}
+                </td>
+              );
+            })}
+            {actions && (
+              <td>
+                <Dropdown>
+                  <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+                    Actions
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu>
+                    {actions.map((action) => (
+                      <Dropdown.Item
+                        onClick={() => action.action(item, refetch)}
+                      >
+                        {action.name}
+                      </Dropdown.Item>
+                    ))}
+                  </Dropdown.Menu>
+                </Dropdown>
+              </td>
+            )}
+          </tr>
+        ))}
+      </tbody>
+    </Table>
+  );
+};
+
+export default TableComponent;

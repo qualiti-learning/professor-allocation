@@ -1,24 +1,32 @@
-const Button = ({ name, onClick, children }) => (
+import { Button } from "react-bootstrap";
+
+const WelcomeButton = ({ name, onClick }) => (
   <div>
     <span>Olá {name} ... </span>
-    <button onClick={onClick}>{`Abrir ${name}`}</button>
+    <Button variant="danger" onClick={onClick}>{`Abrir ${name}`}</Button>
   </div>
 );
 
 function App() {
   return (
     <div className="App">
-      <Button name="Google" onClick={() => window.open("https://google.com")} />
-      <Button
+      <WelcomeButton
+        name="Google"
+        onClick={() => window.open("https://google.com")}
+      />
+      <WelcomeButton
         name="Facebook"
         onClick={() => window.open("https://facebook.com")}
       />
-      <Button name="Gmail" onClick={() => window.open("https://gmail.com")} />
-      <Button
+      <WelcomeButton
+        name="Gmail"
+        onClick={() => window.open("https://gmail.com")}
+      />
+      <WelcomeButton
         name="Youtube"
         onClick={() => window.open("https://youtube.com")}
       />
-      <Button
+      <WelcomeButton
         name="Twitter"
         onClick={() => window.open("https://twitter.com")}
       />
